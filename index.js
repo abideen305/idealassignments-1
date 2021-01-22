@@ -20,13 +20,13 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 
 // allow your app to parse urlencoded and json encoded request data
-const bodyParser = require("body-parser");
+// const bodyParser = require("body-parser");
 app.use(
-  bodyParser.urlencoded({
+  express.urlencoded({
     extended: true,
   })
 );
-app.use(bodyParser.json());
+app.use(express.json());
 
 //set up session
 app.use(
@@ -59,8 +59,6 @@ app.use(function (req, res, next) {
   res.locals.user = req.user || null;
   next();
 });
-
-//set up any other middleware in here
 
 // set up your routing here
 app.use("/", defaultRoute);
