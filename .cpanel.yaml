@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/ideaybjw/repositories/idealassignments
+    - /bin cp * $DEPLOYPATH #copy all from root
