@@ -7,6 +7,7 @@ const flash = require("connect-flash");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const routes = require("./src/routes/");
+require("dotenv").config();
 
 // import database connection
 let dbConnection = require("./src/db/mongoose");
