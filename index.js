@@ -7,7 +7,7 @@ const flash = require("connect-flash");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const routes = require("./src/routes/");
-// require("dotenv").config();
+require("dotenv").config();
 
 // import database connection
 let dbConnection = require("./src/db/mongoose");
@@ -79,8 +79,8 @@ app.get("*", (req, res) => {
 });
 
 // start your server
-// const port = process.env.PORT || "4000";
+const port = process.env.PORT || "4000";
 
-app.listen();
-
-console.log(`App listening`);
+app.listen(port, () => {
+  console.log(`App listening on port ${port}`);
+});
