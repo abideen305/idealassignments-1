@@ -1,4 +1,6 @@
-<body style="margin: 0; padding: 0">
+const emailTemplateForUser = (progressUrl, paymentUrl, data) => {
+  const html = `
+	<body style="margin: 0; padding: 0">
   <table
     border="0"
     cellpadding="0"
@@ -38,8 +40,7 @@
               "
             >
               <p>
-                A user just submitted an assignment with the email ${ data.email
-                }
+                A user just submitted an assignment with the email ${data.email}
               </p>
             </td>
           </tr>
@@ -129,3 +130,9 @@
     </tr>
   </table>
 </body>
+
+
+`;
+  return { html };
+};
+module.exports = emailTemplateForUser;

@@ -3,10 +3,10 @@ const passport = require("./src/passport/index");
 const app = express();
 // const helmet = require("helmet-");
 const path = require("path");
+const flash = require("connect-flash");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
-
-// work on role based authentication
+const routes = require("./src/routes/");
 
 // import database connection
 let dbConnection = require("./src/db/mongoose");
@@ -51,8 +51,16 @@ app.use(passport.initialize());
 // inform passport of the session and tell the app to allow passport manage your sessions;
 app.use(passport.session());
 
+//use flash
+app.use(flash());
+app.use((req, res, next) => {
+  res.locals.success_msg = req.flash("success_msg");
+  res.locals.error_msg = req.flash("error_msg");
+  res.locals.error = req.flash("error");
+  next();
+});
+
 // setup your routes
-const { usersRoute, defaultRoute } = require("./src/routes/index");
 
 //middleware to pass user obj to the req.locals in the ejs instance.
 app.use(function (req, res, next) {
@@ -60,9 +68,8 @@ app.use(function (req, res, next) {
   next();
 });
 
-// set up your routing here
-app.use("/", defaultRoute);
-app.use("/users", usersRoute);
+// Routing
+app.use(routes);
 
 //setup your fallback route here
 app.get("*", (req, res) => {
@@ -71,7 +78,8 @@ app.get("*", (req, res) => {
 });
 
 // start your server
+const port = process.env.PORT || 4000;
 
-app.listen(process.env.PORT || 4000, () => {
-  console.log(`App listening on port ${process.env.PORT || 3000}`);
+app.listen(port, () => {
+  console.log(`App listening on port ${port}`);
 });

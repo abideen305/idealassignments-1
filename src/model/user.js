@@ -53,18 +53,24 @@ userSchema.statics = {
   },
 };
 
-userSchema.pre("save", function (next) {
-  let user = this;
-  if (user.isModified("password")) {
-    console.log(user);
-    let salt = bcrypt.genSaltSync(10);
-    if (!salt) next(false);
-    let hashedPassword = bcrypt.hashSync(user.password, salt);
-    if (!hashedPassword) next(false);
-    user.password = hashedPassword;
-    next();
+userSchema.pre(
+  "save",
+  function (next) {
+    let user = this;
+    if (user.isModified("password")) {
+      console.log(user);
+      let salt = bcrypt.genSaltSync(10);
+      if (!salt) next(false);
+      let hashedPassword = bcrypt.hashSync(user.password, salt);
+      if (!hashedPassword) next(false);
+      user.password = hashedPassword;
+      next();
+    }
+  },
+  {
+    timestamps: true,
   }
-});
+);
 
 let Users = mongoose.model("Users", userSchema);
 module.exports = Users;

@@ -15,11 +15,15 @@ passport.use(
         email: username,
       })
         .then((user) => {
-          if (!user) return done(null, false);
+          if (!user)
+            return done(null, false, {
+              message: "Email is not registered",
+            });
           else {
             bcrypt.compare(password, user.password, (err, isMatch) => {
               if (err) return done(null, false);
-              else if (!isMatch) return done(null, false);
+              else if (!isMatch)
+                return done(null, false, { message: "password incorrect" });
               else return done(null, user);
             });
           }

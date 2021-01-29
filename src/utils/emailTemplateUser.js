@@ -1,4 +1,6 @@
-<body style="margin: 0; padding: 0">
+const emailTemplateForUser = (progressUrl, cancelUrl, username, data) => {
+  const html = `
+	<body style="margin: 0; padding: 0">
   <table
     border="0"
     cellpadding="0"
@@ -24,7 +26,7 @@
                 color: #050505;
               "
             >
-              <p>Hi Admin</p>
+              <p>Hi ${username || ""}</p>
             </td>
           </tr>
           <tr>
@@ -37,10 +39,9 @@
                 line-height: 20px;
               "
             >
-              <p>
-                A user just submitted an assignment with the email ${ data.email
-                }
-              </p>
+              <p>You just submitted an assignment with the email ${
+                data.email
+              }</p>
             </td>
           </tr>
           <tr>
@@ -62,7 +63,7 @@
                     padding-top: 5px;
                   "
                 >
-                  Edit progress</a
+                  Check progress</a
                 >
               </p>
             </td>
@@ -89,7 +90,7 @@
                 </tr>
                 <tr>
                   <td>page count</td>
-                  <td>${data.deadline}</td>
+                  <td>${data.pageCount}</td>
                 </tr>
                 <tr>
                   <td>Budget</td>
@@ -97,7 +98,7 @@
                 </tr>
                 <tr>
                   <td>File</td>
-                  <td><a href="${data.fileUrl}">View File</a></td>
+                  <td><a href=${data.fileUrl}>View File</a></td>
                 </tr>
               </table>
             </td>
@@ -114,8 +115,10 @@
             >
               <p>
                 click
-                <a href="${paymentUrl}">here</a> to intialize payment
+                <a href="${cancelUrl}">here</a> to
+                cancel if you didn't initiate this request
               </p>
+              <p>Thank you for working with Ideal Assignments Help</p>
             </td>
           </tr>
         </table>
@@ -129,3 +132,8 @@
     </tr>
   </table>
 </body>
+
+`;
+  return { html };
+};
+module.exports = emailTemplateForUser;
