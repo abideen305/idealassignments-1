@@ -8,6 +8,7 @@ const assignmentSchema = new Schema(
       type: String,
       required: true,
     },
+    name: String,
     phone: String,
     subject: String,
     fileUrl: String,
