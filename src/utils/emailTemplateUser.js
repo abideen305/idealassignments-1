@@ -98,7 +98,7 @@ const emailTemplateForUser = (progressUrl, cancelUrl, username, data) => {
                 </tr>
                 <tr>
                   <td>File</td>
-                  <td><a href=${data.fileUrl}>View File</a></td>
+                  <td><a href="${data.fileUrl}">${data.fileUrl ? "View File": "No file"}</a></td>
                 </tr>
               </table>
             </td>

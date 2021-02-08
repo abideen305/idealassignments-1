@@ -41,13 +41,19 @@
         <h2>Submit Assignments</h2>
         <%- include('./partials/messages.ejs') %>
 
+        <input type="text" placeholder="Name" name="name" class="email" />
+        <small><%if(typeof fieldError != 'undefined' && fieldError.name) { %> <%=fieldError.name %> <% } %></small>
         <input type="text" placeholder="Email" name="email" class="email" />
+        <small><%if(typeof fieldError != 'undefined' && fieldError.email) { %> <%=fieldError.email %> <% } %></small>
+       
         <input
           type="text"
           placeholder="Enter Phone No."
           class="number-home"
           name="phone"
         />
+        <small><%if(typeof fieldError != 'undefined' && fieldError.phone) { %> <%=fieldError.phone %> <% } %></small>
+
         <select class="selectSubject" name="subject">
           <option value="">Select Subject</option>
           <option value="Mathematics">General Assignments</option>
@@ -55,6 +61,8 @@
           <option value="Accounts">Essay Writing</option>
           <option value="Finance">Business Plan</option>
         </select>
+        <small><%if(typeof fieldError != 'undefined' && fieldError.subject) { %> <%=fieldError.subject %> <% } %></small>
+
         <input
           type="file"
           name="assignment_file"
@@ -66,6 +74,8 @@
           class="some_class deadline-home"
           name="deadline"
         />
+        <small><%if(typeof fieldError != 'undefined' && fieldError.deadline) { %> <%=fieldError.deadline %> <% } %></small>
+
         <select name="pageCount" class="word_count pageWord">
           <option value="0">Select Pages</option>
           <option value="1">1 Page/ 250 Words</option>
@@ -81,12 +91,16 @@
           <option value="11">11 Page/ 2750 Words</option>
           <option value="12">12 + Page/ 2750+ Words</option>
         </select>
+        <small><%if(typeof fieldError != 'undefined' && fieldError.pageCount) { %> <%=fieldError.pageCount %> <% } %></small>
+        
         <input
           type="text"
           id="amount"
           name="budget"
           placeholder="Tell us your budget"
         />
+        <small><%if(typeof fieldError != 'undefined' && fieldError.budget) { %> <%=fieldError.budget %> <% } %></small>
+
         <button class="right_btn submit-home">Submit Now</button>
       </form>
     </div>

@@ -1,26 +1,20 @@
 const { cloudinary } = require("../config");
-// const path = require("path");
 const streamifier = require("streamifier");
 
-// const DatauriParser = require("datauri/parser");
-// const parser = new DatauriParser();
-
-// const dataUri = (file) => {
-//   const fileBuffer = file.buffer;
-//   const fileExt = path.extname(file.originalname).toString();
-//   const { base64 } = parser.format(fileExt, fileBuffer);
-//   return base64;
-// };
-
 const uploadFile = async (filedata) => {
+  const rand = Date.now().toString(16) + Math.random().toString(16);
+
   return new Promise((resolve, reject) => {
-    let stream = cloudinary.uploader.upload_stream((error, result) => {
-      if (result) {
-        resolve(result.secure_url);
-      } else {
-        reject(error);
+    let stream = cloudinary.uploader.upload_stream(
+      { resource_type: "raw", public_id: rand + filedata.originalname },
+      (error, result) => {
+        if (result) {
+          resolve(result.secure_url);
+        } else {
+          reject(error);
+        }
       }
-    });
+    );
 
     streamifier.createReadStream(filedata.buffer).pipe(stream);
   });
