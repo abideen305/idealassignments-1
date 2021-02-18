@@ -43,6 +43,8 @@ exports.postSubmitAssignment = async (req, res) => {
       pageCount: 'required|min:1',
       budget: 'required|min:1',
   };
+  isnear
+  
 
   const messages = {
       'name.required': 'Name is required',
