@@ -21,7 +21,6 @@ const startServer = (databaseConnection) => {
   app.use(express.static("public"));
 
   // allow your app to parse urlencoded and json encoded request data
-  // const bodyParser = require("body-parser");
   app.use(
     express.urlencoded({
       extended: true,
