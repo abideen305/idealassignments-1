@@ -77,10 +77,6 @@ const emailTemplateForUser = (progressUrl, paymentUrl, data) => {
                   <td>${data.email}</td>
                 </tr>
                 <tr>
-                  <td>Phone number</td>
-                  <td>${data.phone}</td>
-                </tr>
-                <tr>
                   <td>Subject</td>
                   <td>${data.subject}</td>
                 </tr>
@@ -89,16 +85,10 @@ const emailTemplateForUser = (progressUrl, paymentUrl, data) => {
                   <td>${data.deadline}</td>
                 </tr>
                 <tr>
-                  <td>page count</td>
-                  <td>${data.deadline}</td>
-                </tr>
-                <tr>
-                  <td>Budget</td>
-                  <td>${data.budget}</td>
-                </tr>
-                <tr>
                   <td>File</td>
-                  <td><a href="${data.fileUrl}">${data.fileUrl ? "View File": "No file"}</a></td>
+                  <td><a href="${data.fileUrl}">${
+    data.fileUrl ? "View File" : "No file"
+  }</a></td>
                 </tr>
               </table>
             </td>

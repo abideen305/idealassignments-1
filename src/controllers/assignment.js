@@ -5,6 +5,7 @@ const emailTemplateforUser = require("../utils/emailTemplateUser");
 const emailTemplateforAdmin = require("../utils/emailTemplateAdmin");
 const config = require("../../config");
 const { validateAll } = require("indicative/validator");
+const querystring = require("querystring");
 
 exports.getSubmitAssignment = (req, res) => {
   return res.render("submit", {
@@ -24,34 +25,22 @@ exports.postSubmitAssignment = async (req, res) => {
     }
 
     const data = {
-      name: reqData.name,
       email: reqData.email,
-      phone: reqData.phone,
       subject: reqData.subject,
       deadline: reqData.deadline,
-      pageCount: reqData.pageCount,
-      budget: reqData.budget,
       fileUrl,
     };
 
     const rules = {
-      name: "required|min:1",
       email: "required|min:1",
-      phone: "required|min:1",
       subject: "required|min:1",
       deadline: "required|min:1",
-      pageCount: "required|min:1",
-      budget: "required|min:1",
     };
 
     const messages = {
-      "name.required": "Name is required",
       "email.required": "Email is required",
-      "phone.required": "Phone number is required",
       "subject.required": "Subject is required",
       "deadline.required": "Deadline Date is required",
-      "pageCount.required": "pageCount is required",
-      "budget.required": "budget is required",
     };
 
     validateAll(data, rules, messages)
@@ -88,11 +77,15 @@ exports.postSubmitAssignment = async (req, res) => {
           subject: "New assignment Submission",
         });
 
+        res.redirect(
+          reqData.from +
+            "?" +
+            querystring.stringify({
+              success_msg: "Assignment sent successfully",
+            })
+        );
         await Email.sendMail(headers, msg);
         await Email.sendMail(adminHeaders, adminMsg);
-        return res.render("submit", {
-          success_msg: "Assignment sent successfully",
-        });
       })
       .catch((errors) => {
         const formattedErrors = {};
@@ -100,19 +93,28 @@ exports.postSubmitAssignment = async (req, res) => {
           typeof errors === "object" &&
           !Array.isArray(errors) &&
           errors.message;
+
         Array.isArray(errors) &&
           errors.forEach(
             (error) => (formattedErrors[error.field] = error.message)
           );
-        return res.render("submit", {
-          fieldError: formattedErrors,
-          error_msg,
-        });
+        console.log(formattedErrors);
+        res.redirect(
+          reqData.from +
+            "?" +
+            querystring.stringify({
+              ...formattedErrors,
+              error_msg,
+            })
+        );
       });
   } catch (error) {
-    console.log(error);
-    res.render("submit", {
-      error_msg: error.message,
-    });
+    res.redirect(
+      reqData.from +
+        "?" +
+        querystring.stringify({
+          error_msg: error.message,
+        })
+    );
   }
 };

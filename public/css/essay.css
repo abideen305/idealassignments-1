@@ -1,0 +1,246 @@
+p{
+    
+    font-family: robotoregular !important; 
+}
+
+h1, h2, h3, h4, h5, h6{
+  
+    font-family: robotomedium !important;
+}
+
+
+.banner {
+    background: url(../images/essay\ banner.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+}
+
+.banner_text_wthree_pvt {
+    padding: 15vw 0;
+}
+
+.banner:before,
+.inner-banner-w3ls:before {
+    position: absolute;
+    content: '';
+    background: rgba(0, 0, 0, 0.24);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+button.btn.bg-theme {
+    letter-spacing: 1px;
+}
+
+.bg-theme {
+    background: #00f2aa;
+    color: #fff;
+}
+
+.bg-theme1 {
+    background: #ffffff;
+    color: #000;
+}
+.bb-img h3 {
+    text-transform: capitalize;
+    font-size: 1.2em;
+    text-align: center;
+    margin: 1em 0 1.5em;
+    color: #000;
+    font-weight: 600;
+    font-family: 'Lato', sans-serif;
+}
+
+
+.wthree-link-bnr {
+    padding: 8px 25px;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-size: 14px;
+    background: #0083ff;
+    border: 1.5px solid #ffffff;
+    text-transform: uppercase;
+}
+
+.wthree-link-bnr:hover {
+    color: #fff;
+    opacity: .8;
+}
+
+button.btn.wthree-link-bnr:hover {
+    background: #fff;
+    color: #000;
+}
+
+p.bnr-txt {
+    width: 100%;
+    color: #fff;
+    font-size: 1.7em;
+    margin: 0.5em 0 1.2em;
+    line-height: 2;
+}
+
+button.wthree-link-bnr:hover {
+    background: #0083ff;
+    color: #fff;
+}
+
+h3.home-banner-w3 {
+    color: #fff;
+    font-size: 2.5em;
+    line-height: 1.4;
+    text-transform: capitalize;
+    width: 100%;
+    font-weight: 700;
+    /* word-spacing: 4px; */
+}
+.object4{
+    margin: 20px;
+    text-align: center;
+ 
+ }
+ .object4 h2{
+     margin: 30px auto 20px auto;
+     font-size: 40px;
+     font-weight: 300;
+ 
+ }
+ .object4 p{
+     font-size: 15px;
+     line-height: 40px;
+ }
+ .object4 img{
+     padding: 30px;
+ }
+ @media all and (max-width: 768px){
+     .mdmm{
+         width: 500px;
+     }
+ }
+ @media all and (max-width: 500px){
+    .mdmm{
+        width: 400px;
+    }
+}
+@media all and (max-width: 400px){
+    .mdmm{
+        width: 350px;
+    }
+}
+@media all and (max-width: 320px){
+    .mdmm{
+        width: 300px;
+    }
+}
+.main-cap{
+    font-size: 40px;
+    margin: 30px auto 20px;
+    border-bottom: 1px solid #dd6e02;
+    padding: 0 0 12px;
+    display: inline-block;
+    position: relative;
+}
+.main-cap2{
+    font-size: 15px;
+    list-style: 1.5px;
+}
+.main-cap::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    background: #dd6e02;
+    width: 40px;
+    height: 4px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 10;
+}
+b{
+    margin: auto;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 200;
+    border: 2px solid #000000;
+    padding: 10px;
+}
+.objective{
+    margin-top: 40px;
+    text-align: center;
+}
+.objective h2{
+    font-size: 40px;
+    margin: 20px auto;
+
+}
+.objective-cap{
+    font-size: 15px;
+}
+.objective-cap2{
+    margin-top: 40px;
+    font-size: 20px;
+
+}
+.ordinary img{
+    width: 100px;
+}
+
+/* inner banner */
+
+.inner-banner-w3ls {
+    background: url(../images/inner-banner.jpg) no-repeat center;
+    background-size: cover;
+    min-height: 300px;
+    position: relative;
+    z-index: 0;
+}
+
+li.breadcrumb-item a {
+    color: #000;
+}
+
+.breadcrumb-item.active {
+    color: #000000;
+    text-transform: capitalize;
+    font-weight: 600;
+}
+
+/* //inner banner */
+
+/* title */
+
+.wthree_pvt_title {
+    margin-bottom: 5em;
+}
+
+h4.w3pvt-title {
+    color: #0083ff;
+    text-transform: capitalize;
+    font-size: 2.3em;
+    font-weight: 600;
+    text-shadow: 1px 1px 1px #969696;
+}
+
+p.sub-title {
+    color: #333;
+    font-weight: 600;
+    text-transform: capitalize;
+    width: 60%;
+    margin: 1em auto 0;
+}
+
+span.sub-title {
+    text-transform: capitalize;
+    font-size: 1em;
+    color: #333;
+}
+

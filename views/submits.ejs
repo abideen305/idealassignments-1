@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Ideal Assignments Help</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Custom fonts for this template -->
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" />
+    <link
+      href="/vendor/simple-line-icons/css/simple-line-icons.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <!-- Custom styles for this template -->
+    <link href="/css/style.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div class="banner_form">
+      <form
+        action="/assignment/submit"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <h2>Submit Assignments</h2>
+        <%- include('./partials/messages.ejs') %>
+
+        <input type="text" placeholder="Name" name="name" class="email" />
+        <small
+          ><%if(typeof fieldError != 'undefined' && fieldError.name) { %>
+          <%=fieldError.name %> <% } %></small
+        >
+        <input type="text" placeholder="Email" name="email" class="email" />
+        <small
+          ><%if(typeof fieldError != 'undefined' && fieldError.email) { %>
+          <%=fieldError.email %> <% } %></small
+        >
+
+        <input
+          type="text"
+          placeholder="Enter Phone No."
+          class="number-home"
+          name="phone"
+        />
+        <small
+          ><%if(typeof fieldError != 'undefined' && fieldError.phone) { %>
+          <%=fieldError.phone %> <% } %></small
+        >
+
+        <select class="selectSubject" name="subject">
+          <option value="">Select Subject</option>
+          <option value="Mathematics">General Assignments</option>
+          <option value="Science">Statistical Assignments</option>
+          <option value="Accounts">Essay Writing</option>
+          <option value="Finance">Business Plan</option>
+        </select>
+        <small
+          ><%if(typeof fieldError != 'undefined' && fieldError.subject) { %>
+          <%=fieldError.subject %> <% } %></small
+        >
+
+        <input
+          type="file"
+          name="assignment_file"
+          placeholder="Upload Question"
+        />
+        <input
+          type="text"
+          placeholder="Deadline"
+          class="some_class deadline-home"
+          name="deadline"
+        />
+        <small
+          ><%if(typeof fieldError != 'undefined' && fieldError.deadline) { %>
+          <%=fieldError.deadline %> <% } %></small
+        >
+
+        <select name="pageCount" class="word_count pageWord">
+          <option value="0">Select Pages</option>
+          <option value="1">1 Page/ 250 Words</option>
+          <option value="2">2 Page/ 500 Words</option>
+          <option value="3">3 Page/ 750 Words</option>
+          <option value="4">4 Page/ 1000 Words</option>
+          <option value="5">5 Page/ 1250 Words</option>
+          <option value="6">6 Page/ 1500 Words</option>
+          <option value="7">7 Page/ 1750 Words</option>
+          <option value="8">8 Page/ 2000 Words</option>
+          <option value="9">9 Page/ 2250 Words</option>
+          <option value="10">10 Page/ 2500 Words</option>
+          <option value="11">11 Page/ 2750 Words</option>
+          <option value="12">12 + Page/ 2750+ Words</option>
+        </select>
+        <small
+          ><%if(typeof fieldError != 'undefined' && fieldError.pageCount) { %>
+          <%=fieldError.pageCount %> <% } %></small
+        >
+
+        <input
+          type="text"
+          id="amount"
+          name="budget"
+          placeholder="Tell us your budget"
+        />
+        <small
+          ><%if(typeof fieldError != 'undefined' && fieldError.budget) { %>
+          <%=fieldError.budget %> <% } %></small
+        >
+
+        <button class="right_btn submit-home">Submit Now</button>
+      </form>
+    </div>
+
+    <!-- Footer -->
+    <!-- <footer class="footer bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+          <ul class="list-inline mb-2">
+            <li class="list-inline-item">
+              <a href="#">About</a>
+            </li>
+            <li class="list-inline-item">&sdot;</li>
+            <li class="list-inline-item">
+              <a href="#">Contact</a>
+            </li>
+            <li class="list-inline-item">&sdot;</li>
+            <li class="list-inline-item">
+              <a href="#">Terms of Use</a>
+            </li>
+            <li class="list-inline-item">&sdot;</li>
+            <li class="list-inline-item">
+              <a href="#">Privacy Policy</a>
+            </li>
+          </ul>
+          <p class="text-muted small mb-4 mb-lg-0">&copy; Ideal Assignments Help. All Rights Reserved.</p>
+        </div>
+        <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item mr-3">
+              <a href="#">
+                <i class="fab fa-facebook fa-2x fa-fw"></i>
+              </a>
+            </li>
+            <li class="list-inline-item mr-3">
+              <a href="#">
+                <i class="fab fa-twitter-square fa-2x fa-fw"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <i class="fab fa-instagram fa-2x fa-fw"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

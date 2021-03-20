@@ -7,16 +7,18 @@ exports.getLogin = (req, res) => {
   else res.redirect("/dashboard");
 };
 
+
+exports.getRegister = (req, res) => {
+  if (req.isUnauthenticated()) res.render("register", req.query);
+  else res.redirect("/dashboard");
+};
+
+
 exports.postLogin = passport.authenticate("local", {
   successRedirect: "/dashboard",
   failureRedirect: "/auth",
   failureFlash: true,
 });
-
-// exports.getSignUp = (req, res) => {
-//   if (req.isUnauthenticated()) res.render("signup");
-//   else res.redirect("/dashboard");
-// };
 
 exports.postSignUp = async (req, res) => {
   let formData = req.body;

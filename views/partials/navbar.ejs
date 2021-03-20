@@ -1,56 +1,199 @@
-<nav class="navbar is-custom-primary" role="navigation" aria-label="main navigation">
-    <div class="container">
-        <div class="navbar-brand">
-            <a class="navbar-item" href="/">
-                <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-            </a>
+<header id="home">
+  <div class="container">
+    <div
+      class="header d-lg-flex justify-content-between align-items-center py-sm-3 py-2 px-sm-2 px-1"
+    >
+      <!-- logo -->
+      <div id="logo">
+        <h6>
+          <a href="/" title="Ideal Assignments Help">
+            <img src="./images/logo bar.jpeg" alt="" style="width: 55px" />
+          </a>
+        </h6>
+      </div>
+      <!-- //logo -->
+      <!-- nav -->
+      <div class="nav_w3ls ml-lg-5">
+        <nav>
+          <label for="drop" class="toggle">Menu</label>
+          <input type="checkbox" id="drop" />
+          <ul class="menu">
+            <li><a href="/" class="active">Home</a></li>
+            <li><a href="about">About</a></li>
+            <li>
+              <!-- First Tier Drop Down -->
+              <label for="drop-2" class="toggle toogle-2"
+                >Resources
+                <span class="fa fa-angle-down" aria-hidden="true"></span>
+              </label>
+              <a href="#"
+                >Resources
+                <span class="fa fa-angle-down" aria-hidden="true"></span
+              ></a>
+              <input type="checkbox" id="drop-2" />
+              <ul>
+                <li>
+                  <a href="portfolio" class="drop-text"
+                    >Assignments Resources</a
+                  >
+                </li>
+                <li>
+                  <a href="blog.idealassignmentshelp.com" class="drop-text"
+                    >Blog Post</a
+                  >
+                </li>
+                <li><a href="/" class="drop-text">More</a></li>
+              </ul>
+            </li>
+            <li><a href="contact">Contact</a></li>
+            <li class="nav-right-sty mt-lg-0 mt-sm-4 mt-3">
+              <a href="login" class="reqe-button text-uppercase">Login</a>
+              <a href="register" class="reqe-button text-uppercase">Register</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <!-- //nav -->
+    </div>
+  </div>
+</header>
 
-            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </a>
-        </div>
+<!-- banner -->
+<section class="banner">
+  <!-- banner text -->
+  <div class="container container-fluid animate__animated animate__fadeInLeft">
+    <div class="banner_text_wthree_pvt row col">
+      <div class="house col-md-6 col-lg-6">
+        <h3 class="home-banner-w3">Ideal Assignments Help</h3>
 
-        <div id="navbarBasicExample" class="navbar-menu">
-            <% if(user){ %>
-            <div class="navbar-end">
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-item">
-                        <i class="fa fa-user" style="margin-right:10px"></i> Welcome
-                        <%= user.username %>
-                    </a>
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item">
-                            Profile
-                        </a>
-                        <a class="navbar-item">
-                            Account Settings
-                        </a>
+        <p class="bnr-txt">
+          Idealassignmentshelp: Your One Stop Solution And Online Assignment
+          Help You Can Trust
+        </p>
+      </div>
+      <div class="home_form col-sm-12 col-md-6 col-lg-6">
+        <div class="row col">
+          <h3 class="home_form_cap" style="color: rgb(229, 255, 0)">
+            Submit Assigments
+          </h3>
+          <br />
+          <%- include('./messages.ejs') %>
 
-                    </div>
+          <form
+            class="submitPanel"
+            action="/submit"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <fieldset>
+              <div class="input-group">
+                <input
+                  type="email"
+                  class="home-email"
+                  name="email"
+                  id=""
+                  placeholder="Email"
+                />
+                <small style="color: white"
+                  ><%if(typeof email != 'undefined' ) { %> <%=email %> <% }
+                  %></small
+                >
+                <br />
+                <input
+                  type="text"
+                  class="home-text"
+                  placeholder="Country"
+                  name="country"
+                  style="display: block"
+                />
+                <small style="color: white"
+                  ><%if(typeof country != 'undefined' ) { %> <%=country %> <% }
+                  %></small
+                >
+                <br />
+                <select class="home-drop" name="subject" id="">
+                  <option value="" style="display: none">
+                    Select Services
+                  </option>
+                  <option value="Statistical Analysis and Econometrics">
+                    Statistics
+                  </option>
+                  <option value="Essay writing">Essay writing</option>
+                  <option value="Business plan">Business plan</option>
+                  <option value="General Assignmets">General Assignmets</option>
+                </select>
+                <small style="color: white"
+                  ><%if(typeof subject != 'undefined') { %> <%= subject %> <% }
+                  %></small
+                ><br />
+                <input
+                  type="text"
+                  class="home-dead"
+                  placeholder="Deadline"
+                  name="deadline"
+                />
+                <small style="color: white"
+                  ><%if(typeof deadline != 'undefined') { %> <%=deadline %> <% }
+                  %></small
+                >
+
+                <br />
+                <input
+                  type="file"
+                  name="assignment_file"
+                  class="home-file"
+                  required
+                />
+                <input type="hidden" id="from" name="from" value="" />
+
+                <div class="input-group-append">
+                  <button class="btn bg-theme home-btn" type="submit">
+                    Submit
+                  </button>
                 </div>
-
-                <a class="navbar-item" href="logout">
-                    Log Out
-                </a>
-            </div>
-
-            <% } else { %>
-            <div class="navbar-end">
-
-                <a class="navbar-item" href="/register">
-                    Sign up
-                </a>
-                <a class="navbar-item" href="/login">
-                    Log in
-                </a>
-            </div>
-
-            <% } %>
-
+              </div>
+            </fieldset>
+          </form>
         </div>
+      </div>
     </div>
+  </div>
+  <!-- //banner text -->
+  <!-- banner-bottom -->
+  <div class="banner-bottom-w3ls animate__animated animate__bounce">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4 col-6">
+          <div class="bb-img">
+            <img src="images/a2.jpg" class="img-fluid img-thumbnail" alt="" />
+            <h3>
+              <span> <strong>Submit Questions</strong> </span>
+            </h3>
+          </div>
+        </div>
+        <div class="col-sm-4 col-6">
+          <div class="bb-img">
+            <img src="images/a11.jpg" class="img-fluid img-thumbnail" alt="" />
+            <h3>
+              <span> <strong> Pay for Assignments </strong> </span>
+            </h3>
+          </div>
+        </div>
+        <div class="col-sm-4 col-6 mx-auto mt-sm-0 mt-4">
+          <div class="bb-img">
+            <img src="images/a3.jpg" class="img-fluid img-thumbnail" alt="" />
+            <h3>
+              <span> <strong>Receive Solutions</strong> </span>
+            </h3>
+          </div>
+        </div>
+      </div>
     </div>
-    </div>
-</nav>
+  </div>
+  <!-- //banner-bottom -->
+  <div class="clearfix"></div>
+</section>
+<div class="clearfix"></div>
+<script type="text/javascript">
+  document.getElementById("from").value = window.location.pathname;
+</script>

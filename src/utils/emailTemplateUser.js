@@ -72,33 +72,23 @@ const emailTemplateForUser = (progressUrl, cancelUrl, username, data) => {
             <td>
               <p>Assignments Data</p>
               <table style="width: 100%">
-                <tr>
-                  <td>Email</td>
-                  <td>${data.email}</td>
-                </tr>
-                <tr>
-                  <td>Phone number</td>
-                  <td>${data.phone}</td>
-                </tr>
-                <tr>
-                  <td>Subject</td>
-                  <td>${data.subject}</td>
-                </tr>
-                <tr>
-                  <td>Deadline</td>
-                  <td>${data.deadline}</td>
-                </tr>
-                <tr>
-                  <td>page count</td>
-                  <td>${data.pageCount}</td>
-                </tr>
-                <tr>
-                  <td>Budget</td>
-                  <td>${data.budget}</td>
-                </tr>
+              <tr>
+              <td>Email</td>
+              <td>${data.email}</td>
+            </tr>
+            <tr>
+              <td>Subject</td>
+              <td>${data.subject}</td>
+            </tr>
+            <tr>
+              <td>Deadline</td>
+              <td>${data.deadline}</td>
+            </tr>
                 <tr>
                   <td>File</td>
-                  <td><a href="${data.fileUrl}">${data.fileUrl ? "View File": "No file"}</a></td>
+                  <td><a href="${data.fileUrl}">${
+    data.fileUrl ? "View File" : "No file"
+  }</a></td>
                 </tr>
               </table>
             </td>
