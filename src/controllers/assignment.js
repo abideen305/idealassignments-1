@@ -118,3 +118,7 @@ exports.postSubmitAssignment = async (req, res) => {
     );
   }
 };
+
+exports.changeProgress = async (req,res)=>{
+  
+}
