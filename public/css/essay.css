@@ -1,11 +1,20 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
 p{
     
     font-family: robotoregular !important; 
+    font-size: 15px !important;
 }
 
 h1, h2, h3, h4, h5, h6{
   
     font-family: robotomedium !important;
+    
 }
 
 
@@ -21,7 +30,7 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .banner_text_wthree_pvt {
-    padding: 15vw 0;
+    padding: 10vw 0;
 }
 
 .banner:before,
@@ -87,6 +96,7 @@ p.bnr-txt {
     font-size: 1.7em;
     margin: 0.5em 0 1.2em;
     line-height: 2;
+    text-transform: inherit !important;
 }
 
 button.wthree-link-bnr:hover {
@@ -110,7 +120,8 @@ h3.home-banner-w3 {
  }
  .object4 h2{
      margin: 30px auto 20px auto;
-     font-size: 40px;
+     font-size: 24px !important;
+     font-family: robotomedium;
      font-weight: 300;
  
  }
@@ -170,7 +181,8 @@ b{
     text-align: center;
     font-size: 30px;
     font-weight: 200;
-    border: 2px solid #000000;
+    border: 2px solid #0083ffff;
+    background-color: orange;
     padding: 10px;
 }
 .objective{
@@ -178,7 +190,7 @@ b{
     text-align: center;
 }
 .objective h2{
-    font-size: 40px;
+    font-size: 30px;
     margin: 20px auto;
 
 }
@@ -244,3 +256,8 @@ span.sub-title {
     color: #333;
 }
 
+@media all and (max-width: 347px){
+    .home_form_cap{
+        margin: 20px auto 10px;
+    }
+}

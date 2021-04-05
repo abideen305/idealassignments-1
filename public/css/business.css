@@ -1,31 +1,36 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
 p{
     
     font-family: robotoregular !important;
+ font-size: 15px !important;
     
 }
 
 h1, h2, h3, h4, h5, h6{
-   
-    font-family: robotomedium !important;
-    
-    
+  
+  font-family: robotomedium !important;
 
 }
 
-
 .banner {
-    background: url(../images/business-banner.jpg);
+    background: url(../images/businessNew.jpg) ;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     -ms-background-size: cover;
     background-size: cover;
     position: relative;
-    z-index: 1;
+    z-index: -1;
 }
 
 .banner_text_wthree_pvt {
-    padding: 15vw 0;
+    padding: 10vw 0;
 }
 
 .banner:before,
@@ -33,8 +38,8 @@ h1, h2, h3, h4, h5, h6{
     position: absolute;
     content: '';
     background: rgba(0, 0, 0, 0.24);
- width: 50%;
-    height: 50%; 
+    width: 100%;
+    height: 100%;
     top: 0;
     left: 0;
     z-index: -1;
@@ -54,18 +59,12 @@ button.btn.bg-theme {
     color: #000;
 }
 
-.banner-bottom-w3ls {
-    position: relative;
-    left: 14%;
-    width: 72%;
-}
-
 .bb-img h3 {
     text-transform: capitalize;
     font-size: 1.2em;
     text-align: center;
     margin: 1em 0 1.5em;
-    color: #000;
+    color: red;
     font-weight: 600;
     font-family: 'Lato', sans-serif;
 }
@@ -92,7 +91,7 @@ button.btn.wthree-link-bnr:hover {
     color: #000;
 }
 
-p.bnr-txt {
+h4.bnr-txt {
     width: 100%;
     color: #fff;
     font-size: 1.7em;
@@ -114,18 +113,21 @@ h3.home-banner-w3 {
     font-weight: 700;
     /* word-spacing: 4px; */
 }
+
 .object5{
     margin: 20px;
     text-align: center;
  
  }
- .object5 h2{
-     margin: 150px auto 20px auto;
-     font-size: 50px;
-
-     font-weight: 300;
- 
- }
+ .object5 h2{ 
+ margin: auto; 
+ text-align: center; 
+ border:2px solid #007bff;
+  background-color: orange; 
+  padding: 20px; width: 300px; 
+  color: #0b0c10;
+   font-size: 20px; 
+   }
  .object5 p{
      font-size: 20px;
      line-height: 40px;
@@ -184,9 +186,12 @@ h3.home-banner-w3 {
     font-size: 30px;
 }
 
-.bnr-txt{
-    color: whitesmoke !important; 
-    text-transform: uppercase;
+h4.bnr-txt {
+    width: 100%;
+    color: #fff;
+    font-size: 1.7em;
+    margin: 0.5em 0 1.2em;
+    line-height: 2;
 }
 /* inner banner */
 
@@ -238,3 +243,7 @@ span.sub-title {
     color: #333;
 }
 
+div h2:hover{
+  background-color: green;
+    
+}

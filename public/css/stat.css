@@ -10,9 +10,17 @@
 } */
 
 
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
 p{
     
     font-family: robotoregular !important;
+    font-size: 15px !important;
     
 }
 
@@ -24,7 +32,7 @@ h1, h2, h3, h4, h5, h6{
 
 
 .banner_text_wthree_pvt {
-    padding: 15vw 0 5vw;
+    padding: 10vw 0 5vw;
 }
 
 .banner:before,
@@ -58,6 +66,7 @@ button.btn.bg-theme {
     bottom: 20px;
     left: 14%;
     width: 72%;
+    margin-top: 20px;
     grid-template-columns: 100px auto 100px;
     column-gap: 50px;
 }
@@ -70,20 +79,31 @@ button.btn.bg-theme {
     font-size: 1.2em;
     text-align: center;
     margin: 1em 0 1.5em;
-    color: #000;
+    color:red;
     font-weight: 600;
     font-family: 'Lato', sans-serif;
 }
 .object{
    margin: 20px;
    text-align: center;
+  
 
 }
 .object h2{
     margin: 20px auto;
-    font-size: 35px;
+    font-size: 24px !important;
+    font-family: robotomedium !important;
     font-weight: 300;
+    color: aliceblue;
+    background: green;
+    border: 2px solid blue;
+    width: 400px;
+    /* display: inline-block; */
 
+}
+
+.object h2:hover{
+    color: rgb(238, 133, 15);
 }
 .object p{
     font-size: 20px;
@@ -118,7 +138,7 @@ button.btn.wthree-link-bnr:hover {
     color: #000;
 }
 
-p.bnr-txt {
+h4.bnr-txt {
     width: 100%;
     color: #fff;
     font-size: 1.7em;
@@ -142,14 +162,16 @@ h3.home-banner-w3 {
 }
 .last{
     text-align: center;
-    margin-bottom: 50px;
+    text-align: center;
+    margin: auto 30px;
+    column-gap: 20px;
 
 }
 .last h4{
   margin: 20px auto;
   font-weight: 600;
 }
-.last h5{
+.last p{
     font-weight: 300;
     margin: 0 20px;
 }
@@ -225,6 +247,11 @@ span.sub-title {
         width: 600px;
     }
 }
+@media all and (max-width: 640px){
+    .object img{
+        width: 400px;
+    }
+}
 
 @media all and (max-width: 425px){
     body{
@@ -236,6 +263,7 @@ span.sub-title {
     }
     .object h2{
         font-size: 35px;
+        width: 300px;
     }
     .object img{
         width: 300px;
@@ -276,10 +304,21 @@ span.sub-title {
 
 .features h2 {
     text-transform: uppercase;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 12px;
-    color: rgb(238, 133, 15);
+    font-weight: 300;
+    padding: 20px;
+    font-size: 24px !important;
+    font-family: robotomedium !important;
+    text-align: center;  
+    margin: 30px auto;
+    width: 500px;
+    background-color: #0083ff;
+    border: 2px solid orange;
+    color: white;
+}
+@media all and (max-width:425px){
+    .features h2{
+        width: 300px;
+    }
 }
 
 .features p{
@@ -288,6 +327,7 @@ span.sub-title {
         font-weight: 400;
         line-height: 1.45;
         margin-bottom: 17px;
-        font-size: 17px;
+        font-size: 15px !important;
+
     
 }

@@ -1,3 +1,5 @@
+
+
 *{
     box-sizing: border-box;
     margin: 0%;
@@ -7,6 +9,7 @@
 p{
     
     font-family: robotoregular !important;
+    font-size: 15px !important;
     
 }
 
@@ -690,7 +693,7 @@ button.btn.wthree-link-bnr:hover {
     color: #000;
 }
 
-p.bnr-txt {
+h4.bnr-txt {
     width: 100%;
     color: #fff;
     font-size: 1.7em;
@@ -716,7 +719,7 @@ h3.home-banner-w3 {
 /* inner banner */
 
 .inner-banner-w3ls {
-    background: url(../images/inner-banner.jpg) no-repeat center;
+    background: url(../images/register.jpg) no-repeat center;
     background-size: cover;
     min-height: 300px;
     position: relative;
@@ -825,7 +828,7 @@ h4.home-title {
 /* slide */
 
 .slide-banner {
-    background: url(../images/g6.jpg) no-repeat center;
+    background: url(../images/login.jpg) no-repeat center;
     background-size: cover;
     min-height: 500px;
 }
@@ -964,7 +967,7 @@ a.blog_link {
 }
 
 .slide-img {
-    background: url(../images/banner.jpg) no-repeat center;
+    background: url(../images/businessNew.jpg) no-repeat center;
     background-size: cover;
     min-height: 500px;
 }
@@ -1953,20 +1956,22 @@ h3.w3f_title {
       padding: 9px;
   }
   .gen{
-    border:2px solid #f58e0e;
+    border:2px solid orange;
+    background-color: #0083ff !important;
     padding: 9px;
     text-align: center;
 }
 
 .ess{
-    background-color: grey;
+    background-color: #0083ff;
     border: 2px solid #007677;
     text-align: center;
     padding: 9px;
 }
 
+
 .bus{
-    background-color: antiquewhite;
+    background-color: orange;
     border:2px solid #007bff;
     text-align: center;
     padding: 9px;
@@ -1978,10 +1983,11 @@ h3.w3f_title {
   .header-section h2{
     margin: auto;
     text-align: center;
-    border:2px solid #0b0c10 ;
+    border:2px solid orange ;
+    background-color: #0083ff;
     padding: 20px;
     width: 300px;
-    color: #0b0c10;
+    color: #fff !important;
     font-size: 20px;
   }
   .header-section p{
@@ -2102,7 +2108,11 @@ h3.w3f_title {
     cursor: pointer;
  }
  
-
+ @media all and (max-width: 347px){
+    .home_form_cap{
+        margin: 20px auto 10px;
+    }
+}
 
 .img-thumbnail{
     width: 300px;
@@ -2131,10 +2141,6 @@ h3.w3f_title {
   flex: 0 0 100%;
   max-width: 100%;
 }
-.pt-0,
-.py-0 {
-  padding-top: 0px !important;
-}
 .statics-container {
   padding-top: 40px;
   padding-bottom: 40px;
@@ -2157,6 +2163,7 @@ h3.w3f_title {
     margin-top: 30px;
     align-items: center;
     border:2px solid #0b0c10 ;
+    background-color: orange;
     padding: 20px;
     width: 320px;
     color: #0b0c10;
@@ -2265,3 +2272,16 @@ h3.w3f_title {
 
 
 /* delivered order */
+
+
+
+
+
+
+
+
+
+
+
+
+ 
