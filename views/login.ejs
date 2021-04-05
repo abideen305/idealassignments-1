@@ -124,7 +124,7 @@
                 </li>
                 <li><a href="contact">Contact</a></li>
                 <li class="nav-right-sty mt-lg-0 mt-sm-4 mt-3">
-                  <a href="login" class="reqe-button text-uppercase">Login</a>
+                  <a href="/signin" class="reqe-button text-uppercase">Login</a>
                   <a href="register" class="reqe-button text-uppercase"
                     >Register</a
                   >
@@ -152,11 +152,11 @@
       </ol>
     </nav>
     <!-- //breadcrumbs -->
-    <!-- login  -->
+    <!-- /signin  -->
     <div class="modal-body align-w3">
       <%- include('./partials/messages.ejs') %>
 
-      <form action="/login" method="post" class="p-sm-3">
+      <form action="/signin" method="post" class="p-sm-3">
         <div class="form-group">
           <label for="recipient-name" class="col-form-label">Username</label>
           <input
@@ -201,7 +201,7 @@
         </p>
       </form>
     </div>
-    <!-- //login -->
+    <!-- //signin -->
 
     <!-- footer -->
     <footer class="footer py-md-5 pt-md-3 pb-sm-5">

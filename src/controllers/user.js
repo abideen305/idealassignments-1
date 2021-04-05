@@ -14,7 +14,7 @@ exports.getRegister = (req, res) => {
 
 exports.postLogin = passport.authenticate("local", {
   successRedirect: "/dashboard",
-  failureRedirect: "/login",
+  failureRedirect: "/signin",
   failureFlash: true,
 });
 
@@ -41,7 +41,7 @@ exports.postSignUp = async (req, res) => {
     };
     const dataQueryString = queryString.encode(data);
 
-    return res.redirect("/login?" + dataQueryString);
+    return res.redirect("/signin?" + dataQueryString);
   }
   let user = {
     username: formData.username,
@@ -57,7 +57,7 @@ exports.postSignUp = async (req, res) => {
       });
     })
     .catch((err) => {
-      return res.redirect("/login?error='An error occurred'");
+      return res.redirect("/signin?error='An error occurred'");
     });
 };
 
@@ -68,7 +68,7 @@ exports.dashboard = (req, res) => {
       username: req.user.username,
     });
   } else {
-    res.redirect("/login");
+    res.redirect("/signin");
   }
 };
 

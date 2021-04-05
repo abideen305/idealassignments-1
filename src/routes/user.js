@@ -1,10 +1,10 @@
 const router = require("express").Router();
 const cUser = require("../controllers/user");
 
-router.get("/login", cUser.getLogin);
-router.get("/register",cUser.getRegister)
+router.get("/signin", cUser.getLogin);
+router.get("/register", cUser.getRegister);
 
-router.post("/login", cUser.postLogin);
+router.post("/signin", cUser.postLogin);
 
 router.post("/signup", cUser.postSignUp);
 
