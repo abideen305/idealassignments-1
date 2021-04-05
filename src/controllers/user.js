@@ -7,16 +7,14 @@ exports.getLogin = (req, res) => {
   else res.redirect("/dashboard");
 };
 
-
 exports.getRegister = (req, res) => {
   if (req.isUnauthenticated()) res.render("register", req.query);
   else res.redirect("/dashboard");
 };
 
-
 exports.postLogin = passport.authenticate("local", {
   successRedirect: "/dashboard",
-  failureRedirect: "/auth",
+  failureRedirect: "/signin",
   failureFlash: true,
 });
 
@@ -27,12 +25,11 @@ exports.postSignUp = async (req, res) => {
     const dataUrl = {
       username: formData.username || "",
       email: formData.email || "",
-      signupPanel: true,
       error: "Please input all details",
     };
     const dataQueryString = queryString.encode(dataUrl);
 
-    return res.redirect("/auth" + dataQueryString);
+    return res.redirect("/register?" + dataQueryString);
   }
 
   const exist = await User.findOne({ email: formData.email });
@@ -40,12 +37,11 @@ exports.postSignUp = async (req, res) => {
     const data = {
       username: formData.username || "",
       email: formData.email || "",
-      signupPanel: true,
       error: "Email is already registered",
     };
     const dataQueryString = queryString.encode(data);
 
-    return res.redirect("/auth?" + dataQueryString);
+    return res.redirect("/signin?" + dataQueryString);
   }
   let user = {
     username: formData.username,
@@ -61,16 +57,18 @@ exports.postSignUp = async (req, res) => {
       });
     })
     .catch((err) => {
-      return res.redirect("/auth?error='An error occurred'");
+      return res.redirect("/signin?error='An error occurred'");
     });
 };
 
 // Auth
 exports.dashboard = (req, res) => {
   if (req.isAuthenticated()) {
-    res.render("dashboard");
+    res.render("dashboard", {
+      username: req.user.username,
+    });
   } else {
-    res.redirect("/auth");
+    res.redirect("/signin");
   }
 };
 

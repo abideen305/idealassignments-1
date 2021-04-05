@@ -34,13 +34,6 @@ router.get("/business", (req, res) => {
   });
 });
 
-router.get("/dashboard", (req, res) => {
-  res.render("dashboard", {
-    ...req.body,
-    ...req.query,
-  });
-});
-
 router.get("/essay", (req, res) => {
   res.render("essay", {
     ...req.body,
