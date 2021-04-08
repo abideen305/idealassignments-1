@@ -44,9 +44,91 @@
 </head>
 <body>
     <!-- header -->
-    <%- include('./partials/navbar.ejs') %>
+    <header  id="home">
+        <div class="container">
+            <div class="header d-lg-flex justify-content-between align-items-center py-sm-3 py-2 px-sm-2 px-1">
+                <!-- logo -->
+                <div id="logo">
+                    <h6><a href="index.html" title="Ideal Assignments Help"> <img src="./images/logo bar.jpeg" alt=""
+                                style="width: 55px;"> </a></h6>
+                </div>
+                <!-- //logo -->
+                <!-- nav -->
+                <div class="nav_w3ls ml-lg-5">
+                    <nav>
+                        <label for="drop" class="toggle">Menu</label>
+                        <input type="checkbox" id="drop" />
+                        <ul class="menu">
+                            <li><a href="index.html" class="active">Home</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li>
+                                <!-- First Tier Drop Down -->
+                                <label for="drop-2" class="toggle toogle-2">Resources <span class="fa fa-angle-down"
+                                        aria-hidden="true"></span>
+                                </label>
+                                <a href="#">Resources <span class="fa fa-angle-down" aria-hidden="true"></span></a>
+                                <input type="checkbox" id="drop-2" />
+                                <ul>
+                                    <li><a href="resources.html" class="drop-text">Assignments Resources</a></li>
+                                    <li><a href="index.html" class="drop-text">More</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li class="nav-right-sty mt-lg-0 mt-sm-4 mt-3">
+                                <a href="login.html" class="reqe-button text-uppercase">Login</a>
+                                <a href="register.html" class="reqe-button text-uppercase">Register</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- //nav -->
+            </div>
+        </div>
+    </header>
+    <!-- //header -->
 
+    <!-- banner -->
+    <section class="banner">
+        <!-- banner text -->
+        <div class="container container-fluid ">
+            <div class="banner_text_wthree_pvt row col">
+                <div class=" house col-md-6 col-lg-6">
+                   <h3 class="home-banner-w3">Ideal Assignments Help</h3>
 
+                <h4 class="bnr-txt">Idealassignmentshelp: Your One Stop Solution And Online Assignment Help You Can Trust
+                </h4>
+                </div>
+                <div class="home_form col-sm-12 col-md-6 col-lg-6">
+                    <div class="row col">
+                        <h3 class="home_form_cap" style="color: rgb(229, 255, 0);">Submit Assigments</h3>
+                        <form action="#" method="post" class="submitPanel">
+                            <fieldset>
+                                <div class="input-group">
+                                    <input type="email" class="home-email" name="" id="" placeholder="Email"> <br>
+                                    <input type="text" class="home-text" placeholder="Country" style="display: block;"> <br>
+                                    <select class="home-drop" name="" id="">
+                                        <option value="none" style="display: none;"> Select Services </option>
+                                        <option value="Statistical Analysis and Econometrics">Statistics</option>
+                                        <option value="Essay writing">Essay writing</option>
+                                        <option value="Business plan">Business plan</option>
+                                        <option value="General Assignmets">General Assignmets</option>
+                                    </select><br>
+                                    <input type="text" class="home-dead" placeholder="Deadline"> <br>
+                                    <input type="file" class="home-file" required> 
+                                    <div class="input-group-append"> 
+                                        <button class="btn bg-theme home-btn" type="button">Submit</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //banner text -->
+       
+    </section>
+    <div class="clearfix"></div>
 <!-- submit now side panel -->
     <!-- submit now button -->
     <span id="submit_now">
