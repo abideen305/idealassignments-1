@@ -4,11 +4,23 @@ const Schema = mongoose.Schema;
 
 const assignmentSchema = new Schema(
   {
+    title: {
+      type: String,
+      required: true,
+    },
     email: {
       type: String,
       required: true,
     },
     name: String,
+    amountToPay: {
+      type: Number,
+      default: 0,
+    },
+    amountPaid: {
+      type: Number,
+      default: 0,
+    },
     phone: String,
     subject: String,
     fileUrl: String,
@@ -17,8 +29,11 @@ const assignmentSchema = new Schema(
     budget: String,
     status: {
       type: String,
-      enum: ["In review", "In process", "Cancelled", "solved"],
-      default: "In review",
+      enum: ["pending", "cancelled", "rejected", "solved"],
+      default: "pending",
+    },
+    paymentRefs: {
+      type: Array,
     },
   },
   {

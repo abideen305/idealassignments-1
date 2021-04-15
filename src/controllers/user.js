@@ -1,6 +1,7 @@
 const User = require("../model/user");
 let passport = require("../passport/index");
 const queryString = require("querystring");
+const Assignment = require("../model/assignments");
 
 exports.getLogin = (req, res) => {
   if (req.isUnauthenticated()) res.render("login", req.query);
@@ -45,7 +46,7 @@ exports.postSignUp = async (req, res) => {
   }
   let user = {
     username: formData.username,
-    email: formData.email,
+    email: String(formData.email).toLowerCase(),
     password: formData.password,
   };
 
@@ -62,10 +63,12 @@ exports.postSignUp = async (req, res) => {
 };
 
 // Auth
-exports.dashboard = (req, res) => {
+exports.dashboard = async (req, res) => {
   if (req.isAuthenticated()) {
+    const assignmentDetails = await Assignment.find({ email: req.user.email });
     res.render("dashboard", {
       username: req.user.username,
+      data: assignmentDetails,
     });
   } else {
     res.redirect("/signin");

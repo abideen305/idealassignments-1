@@ -1,0 +1,94 @@
+<div class="home_form col-sm-12 col-md-6 col-lg-6">
+  <div class="row col">
+    <h3 class="home_form_cap" style="color: rgb(229, 255, 0)">
+      Submit Assigments
+    </h3>
+    <br />
+    <%- include('./messages.ejs') %>
+
+    <form
+      class="submitPanel"
+      action="/submit"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      <fieldset>
+        <div class="input-group">
+          <input
+            type="email"
+            class="home-email"
+            name="email"
+            id=""
+            placeholder="Email"
+          />
+          <small style="color: white"
+            ><%if(typeof email != 'undefined' ) { %> <%=email %> <% } %></small
+          >
+          <br />
+          <input
+            type="title"
+            class="home-email"
+            name="title"
+            id=""
+            placeholder="Title"
+          />
+          <small style="color: white"
+            ><%if(typeof title != 'undefined' ) { %> <%=title %> <% } %></small
+          >
+          <br />
+          <input
+            type="text"
+            class="home-text"
+            placeholder="Country"
+            name="country"
+            style="display: block"
+          />
+          <small style="color: white"
+            ><%if(typeof country != 'undefined' ) { %> <%=country %> <% }
+            %></small
+          >
+          <br />
+          <select class="home-drop" name="subject" id="">
+            <option value="" style="display: none">Select Services</option>
+            <option value="Statistical Analysis and Econometrics">
+              Statistics
+            </option>
+            <option value="Essay writing">Essay writing</option>
+            <option value="Business plan">Business plan</option>
+            <option value="General Assignmets">General Assignmets</option>
+          </select>
+          <small style="color: white"
+            ><%if(typeof subject != 'undefined') { %> <%= subject %> <% }
+            %></small
+          ><br />
+          <input
+            type="text"
+            class="home-dead"
+            placeholder="Deadline"
+            name="deadline"
+          />
+          <small style="color: white"
+            ><%if(typeof deadline != 'undefined') { %> <%=deadline %> <% }
+            %></small
+          >
+
+          <br />
+          <input
+            type="file"
+            name="assignment_file"
+            class="home-file"
+            required
+          />
+          <input type="hidden" id="from" name="from" value="" />
+
+          <div class="input-group-append">
+            <button class="btn bg-theme home-btn" type="submit">Submit</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+<script type="text/javascript">
+  document.getElementById("from").value = window.location.pathname;
+</script>

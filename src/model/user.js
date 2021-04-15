@@ -19,6 +19,10 @@ const userSchema = new Schema({
     required: true,
     type: String,
   },
+  isAdmin: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 // instance methods

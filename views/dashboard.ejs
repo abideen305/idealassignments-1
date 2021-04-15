@@ -35,10 +35,37 @@
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css"
+    />
+
+    <!-- <style>
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      td,
+      th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
+    </style> -->
     <!-- Custom styles for this template -->
-    <link rel="shortcut icon" href="images/logo bar.jpeg" type="image/x-icon" />
-    <link rel="stylesheet" href="./vendor/fontawesome-free/css/all.css" />
-    <link rel="stylesheet" href="css/dashboard.css" />
+    <link
+      rel="shortcut icon"
+      href="/images/logo bar.jpeg"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="/fontawesome-free/css/all.css" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
   </head>
   <body>
     <header>
@@ -55,24 +82,28 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="/">
             <img src="images/logo bar.jpeg" alt="Logo" style="width: 100px" />
           </a>
-          <a class="navbar-brand" href="#">Ideal Assigments Help</a>
+          <a class="navbar-brand" href="/">Ideal Assigments Help</a>
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" href="#">Profile</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="#">Purchase History</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="blog.idealassignmentshelp.com"
+              <a
+                class="nav-link active"
+                href="https://blog.idealassignmentshelp.com"
                 >Blog</a
               >
             </li>
+            <li class="nav-item">
+              <!-- <a class="nav-link active" href="#">Profile</a> -->
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/transactions"
+                >Transaction History</a
+              >
+            </li>
           </ul>
-
+          <!-- 
           <form class="form-inline my-2 my-lg-0">
             <input
               class="form-control mr-sm-2"
@@ -80,7 +111,7 @@
               placeholder="Search"
               aria-label="Search"
             />
-          </form>
+          </form> -->
         </div>
       </nav>
     </header>
@@ -90,72 +121,60 @@
     </section>
 
     <hr />
-    <main class="sidebar">
+    <div style="text-align: center">
       <button type="button">
         <a href="submit"> Submit New Assigments </a>
       </button>
       <br />
-
-      <!-- <a href="#">Profile</a> <br>
-<a href="#">Previous file</a> <br>
-<a href="#">Resources</a> <br> -->
-    </main>
-
-    <!-- current order -->
+    </div>
 
     <div class="tab_main tabs">
-      <div class="links-fixed">
-        <ul class="tab-links">
-          <li class="active">
-            <a href="#tools">Current Order</a>
-          </li>
-        </ul>
-      </div>
-
       <section class="tab-content">
         <div class="tab active" id="tools">
           <div class="New_assignment" id="wrapper">
             <div class="noordr">
+              <h3 class="links-fixed">All Orders</h3>
+
               <!-- <img src="/images/no-order.svg"> -->
               <!-- Current Order not found
           <p>Looks like you haven’t added any assignment yet.</p> -->
-              <div>
-                <h4>Your current order details:</h4>
-
-                Email: <br />
-                Country: <br />
-                <a href="http://" style="text-decoration: none"
-                  >Assignment File</a
-                >
-              </div>
-
-              <a href="/" class="odr-btn">Add New Order</a>
+              <table id="table_assignment" class="" style="width: 90%">
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Subject</th>
+                    <th>Deadline</th>
+                    <th>Status</th>
+                    <th>File</th>
+                    <th>Date Created</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% for(var i=0; i < data.length; i++) { %>
+                  <tr>
+                    <td>
+                      <a href="/assignment/<%= data[i].id %>">
+                        <%= data[i].title %>
+                      </a>
+                    </td>
+                    <td><%= data[i].subject %></td>
+                    <td><%= data[i].deadline %></td>
+                    <td><%= data[i].status %></td>
+                    <td><a href="<%= data[i].fileUrl %>">Download</a></td>
+                    <td>
+                      <%= new Date(data[i].createdAt ).toISOString().slice(0,
+                      10) %>
+                    </td>
+                  </tr>
+                  <% } %>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
         <div id="guides" class="tab MyOders" style="display: none"></div>
       </section>
     </div>
-
-    <section>
-      <div class="tab_main tabs">
-        <div class="links-fixed">
-          <ul class="tab-links">
-            <li class="active">
-              <a href="#">Delivered Order</a>
-            </li>
-
-            <h3>Your previous orders</h3>
-            <ul>
-              <li>
-                <a href="#"> Document </a>
-                <h6>Date:</h6>
-              </li>
-            </ul>
-          </ul>
-        </div>
-      </div>
-    </section>
 
     <footer class="footer">
       <h4><span>You are login as <%=username %> </span></h4>
@@ -169,6 +188,9 @@
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
       crossorigin="anonymous"
     ></script>
+
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
       integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
@@ -179,5 +201,12 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
+    <script>
+      $("#table_assignment").DataTable({
+        order: [[3, "desc"]],
+        paging: false,
+        info: false,
+      });
+    </script>
   </body>
 </html>

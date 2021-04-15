@@ -10,7 +10,23 @@ const querystring = require("querystring");
 exports.getSubmitAssignment = (req, res) => {
   return res.render("submit", {
     user: req.user,
-    isAuthenticate: req.isAuthenticated(),
+    isAuthenticated: req.isAuthenticated(),
+    ...req.query,
+  });
+};
+
+exports.getAssignmentDetails = async (req, res) => {
+  const appURL =
+    process.env.NODE_ENV === "production"
+      ? config.BASE_URL
+      : "http://localhost:4000";
+  const data = await Assignment.findById(req.params.id);
+  if (!data) return res.redirect("/dashboard");
+  return res.render("assignment_details", {
+    data,
+    user: req.user,
+    appURL,
+    message: req.query.message,
   });
 };
 
@@ -25,6 +41,7 @@ exports.postSubmitAssignment = async (req, res) => {
     }
 
     const data = {
+      title: reqData.title,
       email: reqData.email,
       subject: reqData.subject,
       deadline: reqData.deadline,
@@ -51,22 +68,10 @@ exports.postSubmitAssignment = async (req, res) => {
             : "http://localhost:4000";
         const assignment = new Assignment(data);
         const savedData = await assignment.save();
-        const progressUrl = `${URL}/assignment/${savedData.id}`;
-        const cancelUrl = `${URL}/assignment/${savedData.id}/cancel`;
-        const editProgressUrl = `${URL}/assignment/${savedData.id}/edit`;
-        const paymentUrl = `${URL}/assignment/${savedData.id}/pay`;
+        const assignmentURL = `${URL}/assignment/${savedData.id}`;
 
-        const msg = emailTemplateforUser(
-          progressUrl,
-          cancelUrl,
-          username || "",
-          data
-        );
-        const adminMsg = emailTemplateforAdmin(
-          editProgressUrl,
-          paymentUrl,
-          data
-        );
+        const msg = emailTemplateforUser(assignmentURL, username || "", data);
+        const adminMsg = emailTemplateforAdmin(assignmentURL, data);
 
         const headers = Email.header({
           to: data.email,
@@ -77,6 +82,8 @@ exports.postSubmitAssignment = async (req, res) => {
           subject: "New assignment Submission",
         });
 
+        await Email.sendMail(adminHeaders, adminMsg);
+
         res.redirect(
           reqData.from +
             "?" +
@@ -85,20 +92,18 @@ exports.postSubmitAssignment = async (req, res) => {
             })
         );
         await Email.sendMail(headers, msg);
-        await Email.sendMail(adminHeaders, adminMsg);
       })
       .catch((errors) => {
         const formattedErrors = {};
         const error_msg =
-          typeof errors === "object" &&
-          !Array.isArray(errors) &&
-          errors.message;
+          typeof errors === "object" && !Array.isArray(errors)
+            ? errors.message
+            : null;
 
         Array.isArray(errors) &&
           errors.forEach(
             (error) => (formattedErrors[error.field] = error.message)
           );
-        console.log(formattedErrors);
         res.redirect(
           reqData.from +
             "?" +
@@ -119,6 +124,42 @@ exports.postSubmitAssignment = async (req, res) => {
   }
 };
 
-exports.changeProgress = async (req,res)=>{
-  
-}
+exports.changeStatus = async (req, res) => {
+  const status = req.query.status;
+  const id = req.params.id;
+  try {
+    const assignment = await Assignment.findByIdAndUpdate(
+      id,
+      {
+        status,
+      },
+      { new: true }
+    );
+
+    return res.render("assignment_details", {
+      data: assignment,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+exports.setAmountToPay = async (req, res) => {
+  const { amount } = req.body;
+  const id = req.params.id;
+  try {
+    await Assignment.findByIdAndUpdate(
+      id,
+      {
+        amountToPay: amount,
+      },
+      { new: true }
+    );
+
+    return res.json({
+      success: true,
+    });
+  } catch (error) {
+    res.json({ error });
+  }
+};

@@ -1,4 +1,4 @@
-const emailTemplateForUser = (progressUrl, cancelUrl, username, data) => {
+const emailTemplateForUser = (assignmentURL, username, data) => {
   const html = `
 	<body style="margin: 0; padding: 0">
   <table
@@ -48,7 +48,7 @@ const emailTemplateForUser = (progressUrl, cancelUrl, username, data) => {
             <td align="center">
               <p>
                 <a
-                  href="${progressUrl}"
+                  href="${assignmentURL}"
                   style="
                     width: 250px;
                     display: inline-block;
@@ -63,7 +63,7 @@ const emailTemplateForUser = (progressUrl, cancelUrl, username, data) => {
                     padding-top: 5px;
                   "
                 >
-                  Check progress</a
+                  Check assignment detials and make payment</a
                 >
               </p>
             </td>
@@ -105,7 +105,7 @@ const emailTemplateForUser = (progressUrl, cancelUrl, username, data) => {
             >
               <p>
                 click
-                <a href="${cancelUrl}">here</a> to
+                <a href="${assignmentURL}">here</a> to
                 cancel if you didn't initiate this request
               </p>
               <p>Thank you for working with Ideal Assignments Help</p>

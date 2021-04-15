@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const usersRoute = require("./user");
 const assignmentRoute = require("./assignment");
+const transactionRoute = require("./transaction");
 
 router.get("/", (req, res) => {
   res.render("index", {
@@ -62,14 +63,8 @@ router.get("/portfolio", (req, res) => {
   });
 });
 
-router.get("/submit", (req, res) => {
-  res.render("submit", {
-    ...req.body,
-    ...req.query,
-  });
-});
-
 router.use(usersRoute);
 router.use(assignmentRoute);
+router.use(transactionRoute);
 
 module.exports = router;

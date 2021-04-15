@@ -1,4 +1,4 @@
-const emailTemplateForUser = (progressUrl, paymentUrl, data) => {
+const emailTemplateForUser = (assignmentURL, data) => {
   const html = `
 	<body style="margin: 0; padding: 0">
   <table
@@ -48,7 +48,7 @@ const emailTemplateForUser = (progressUrl, paymentUrl, data) => {
             <td align="center">
               <p>
                 <a
-                  href="${progressUrl}"
+                  href="${assignmentURL}"
                   style="
                     width: 250px;
                     display: inline-block;
@@ -63,7 +63,7 @@ const emailTemplateForUser = (progressUrl, paymentUrl, data) => {
                     padding-top: 5px;
                   "
                 >
-                  Edit progress</a
+                View Asssignment</a
                 >
               </p>
             </td>
@@ -103,10 +103,7 @@ const emailTemplateForUser = (progressUrl, paymentUrl, data) => {
                 line-height: 20px;
               "
             >
-              <p>
-                click
-                <a href="${paymentUrl}">here</a> to intialize payment
-              </p>
+             
             </td>
           </tr>
         </table>

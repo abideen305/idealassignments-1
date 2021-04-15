@@ -4,7 +4,7 @@ const env = process.env.NODE_ENV || "development";
 const config = require("../../config")[env];
 
 let mongooseConnectionOption = {
-  useFindAndModify: true,
+  useFindAndModify: false,
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,

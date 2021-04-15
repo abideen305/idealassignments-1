@@ -13,6 +13,7 @@ module.exports = {
   SMTP_PASSWORD: process.env.SMTP_PASSWORD,
   FROM_EMAIL: process.env.FROM_EMAIL,
   BASE_URL: process.env.BASE_URL,
+  paystackSecretKey: process.env.PAYSTACK_SECRET_KEY,
   development: {
     dbURI: process.env.DBURIDEV,
   },
