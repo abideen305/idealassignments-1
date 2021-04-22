@@ -24,7 +24,7 @@ exports.postSignUp = async (req, res) => {
 
   if (!formData.username || !formData.email || !formData.password) {
     const dataUrl = {
-      username: formData.username || "",
+      username: formData.username.toLowerCase() || "",
       email: formData.email || "",
       error: "Please input all details",
     };
@@ -33,7 +33,7 @@ exports.postSignUp = async (req, res) => {
     return res.redirect("/register?" + dataQueryString);
   }
 
-  const exist = await User.findOne({ email: formData.email });
+  const exist = await User.findOne({ email: formData.email.toLowerCase() });
   if (exist) {
     const data = {
       username: formData.username || "",

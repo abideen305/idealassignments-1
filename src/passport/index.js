@@ -12,7 +12,7 @@ passport.use(
     },
     (username, password, done) => {
       User.findOne({
-        email: username,
+        email: username.toLowerCase(),
       })
         .then((user) => {
           if (!user)
