@@ -65,7 +65,8 @@ exports.postSignUp = async (req, res) => {
 // Auth
 exports.dashboard = async (req, res) => {
   if (req.isAuthenticated()) {
-    const assignmentDetails = await Assignment.find({ email: req.user.email });
+    const query = req.user.isAdmin ? {} : { email: req.user.email };
+    const assignmentDetails = await Assignment.find(query);
     res.render("dashboard", {
       username: req.user.username,
       data: assignmentDetails,
