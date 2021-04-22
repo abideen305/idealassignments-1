@@ -1867,6 +1867,7 @@ h3.w3f_title {
 }
 .home-file {
   margin: 10px auto;
+  color: white;
 }
 
 @media all and (max-width: 991px) {
