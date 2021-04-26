@@ -2,26 +2,31 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const bcrypt = require("bcryptjs");
 
-const userSchema = new Schema({
-  username: {
-    type: String,
-    required: true,
-    minlength: 4,
+const userSchema = new Schema(
+  {
+    username: {
+      type: String,
+      required: true,
+      minlength: 4,
+    },
+    email: {
+      type: String,
+      unique: true,
+      required: true,
+    },
+    password: {
+      required: true,
+      type: String,
+    },
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    },
   },
-  email: {
-    type: String,
-    unique: true,
-    required: true,
-  },
-  password: {
-    required: true,
-    type: String,
-  },
-  isAdmin: {
-    type: Boolean,
-    default: false,
-  },
-});
+  {
+    timestamps: true,
+  }
+);
 
 // instance methods
 userSchema.methods = {

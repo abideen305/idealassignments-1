@@ -91,7 +91,7 @@
               class="nav-item"
               style="display:<%if( !user.isAdmin  ){ %> none <% } %>"
             >
-              <a class="nav-link active" href="/all_users">All Users</a>
+              <a class="nav-link active" href="/dashboard">Dashboard</a>
             </li>
             <li class="nav-item">
               <a
@@ -122,24 +122,12 @@
       </nav>
     </header>
 
-    <section>
-      <h1 class="dash">Welcome to your Dashboard</h1>
-    </section>
-
-    <hr />
-    <div style="text-align: center">
-      <button type="button">
-        <a href="submit"> Submit New Assigments </a>
-      </button>
-      <br />
-    </div>
-
     <div class="tab_main tabs">
       <section class="tab-content">
         <div class="tab active" id="tools">
           <div class="New_assignment" id="wrapper">
             <div class="noordr">
-              <h3 class="links-fixed">All Orders</h3>
+              <h3 class="links-fixed">All Users</h3>
 
               <!-- <img src="/images/no-order.svg"> -->
               <!-- Current Order not found
@@ -147,29 +135,22 @@
               <table id="table_assignment" class="" style="width: 90%">
                 <thead>
                   <tr>
-                    <th>Title</th>
-                    <th>Subject</th>
-                    <th>Deadline</th>
-                    <th>Status</th>
-                    <th>File</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>isAdmin</th>
                     <th>Date Created</th>
                   </tr>
                 </thead>
                 <tbody>
                   <% for(var i=0; i < data.length; i++) { %>
                   <tr>
+                    <td><%= data[i].username %></td>
+                    <td><%= data[i].email %></td>
+                    <td><%= data[i].isAdmin %></td>
                     <td>
-                      <a href="/assignment/<%= data[i].id %>">
-                        <%= data[i].title %>
-                      </a>
-                    </td>
-                    <td><%= data[i].subject %></td>
-                    <td><%= data[i].deadline %></td>
-                    <td><%= data[i].status %></td>
-                    <td><a href="<%= data[i].fileUrl %>">Download</a></td>
-                    <td>
-                      <%= new Date(data[i].createdAt ).toISOString().slice(0,
-                      10) %>
+                      <%if( data[i].createdAt ){ %> <%= new
+                      Date(data[i].createdAt ).toISOString().slice(0, 10) %> <%
+                      } %>
                     </td>
                   </tr>
                   <% } %>
@@ -183,7 +164,7 @@
     </div>
 
     <footer class="footer">
-      <h4><span>You are login as <%=username %> </span></h4>
+      <h4><span>You are login as <%=user.username %> </span></h4>
       <button type="button">
         <a href="/logout" style="text-decoration: none"> Sign Out</a>
       </button>

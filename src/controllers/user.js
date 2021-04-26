@@ -14,6 +14,16 @@ exports.getLogin = (req, res) => {
   else res.redirect("/dashboard");
 };
 
+exports.getAllUser = async (req, res) => {
+  if (req.user.isAdmin) {
+    const allUser = await User.find({});
+    return res.render("all_user", {
+      data: allUser,
+    });
+  }
+  return res.redirect("/dashboard");
+};
+
 exports.getRegister = (req, res) => {
   if (req.isUnauthenticated()) res.render("register", req.query);
   else res.redirect("/dashboard");
@@ -76,6 +86,7 @@ exports.dashboard = async (req, res) => {
     res.render("dashboard", {
       username: req.user.username,
       data: assignmentDetails,
+      user: req.user,
     });
   } else {
     res.redirect("/signin");
