@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
-mongoose.Promise = global.Promise;
 const Schema = mongoose.Schema;
 const bcrypt = require("bcryptjs");
-7;
 
 const userSchema = new Schema({
   username: {
@@ -29,7 +27,10 @@ const userSchema = new Schema({
 userSchema.methods = {
   // e.g
   updatePassword(password) {
-    return true;
+    const user = this;
+    // presave hook will hash the password
+    user.password = password;
+    return user.save();
   },
 };
 

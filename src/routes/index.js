@@ -63,6 +63,20 @@ router.get("/portfolio", (req, res) => {
   });
 });
 
+router.get("/new_password", (req, res) => {
+  res.render("new_password", {
+    ...req.body,
+    ...req.query,
+  });
+});
+
+router.get("/forgot_password", (req, res) => {
+  res.render("forgot_password", {
+    ...req.body,
+    ...req.query,
+  });
+});
+
 router.use(usersRoute);
 router.use(assignmentRoute);
 router.use(transactionRoute);
