@@ -2077,20 +2077,22 @@ h3.w3f_title {
 /* Submit now side panel */
 /* submit now button */
 #submit_now {
-  background: rgb(238, 133, 15);
-  position: fixed;
-  top: 45%;
-  transform: rotate(270deg);
-  right: -45px;
-  padding: 11px 15px;
-  font-size: 15px;
-  letter-spacing: 0.4px;
-  text-transform: uppercase;
-  z-index: 99999;
-  color: #fff;
-  border-radius: 5px 5px 0px 0px;
-  cursor: pointer;
-}
+    background: rgb(238, 133, 15);
+    position: fixed;
+    top: 45%;
+    transform: rotate(270deg);
+/*     right: -45px; */
+/*  Initially set to -45px to stick to the scrolling bar but now to 1px to stay alone*/
+      right : 1px;
+    padding: 11px 15px;
+    font-size: 13px;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    z-index: 99999;
+    color: #fff;
+    border-radius: 5px 5px 0px 0px;
+    cursor: pointer;
+ }
 
 @media all and (max-width: 347px) {
   .home_form_cap {
