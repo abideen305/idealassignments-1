@@ -1,35 +1,41 @@
 const mongoose = require("mongoose");
-mongoose.Promise = global.Promise;
 const Schema = mongoose.Schema;
 const bcrypt = require("bcryptjs");
-7;
 
-const userSchema = new Schema({
-  username: {
-    type: String,
-    required: true,
-    minlength: 4,
+const userSchema = new Schema(
+  {
+    username: {
+      type: String,
+      required: true,
+      minlength: 4,
+    },
+    email: {
+      type: String,
+      unique: true,
+      required: true,
+    },
+    password: {
+      required: true,
+      type: String,
+    },
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    },
   },
-  email: {
-    type: String,
-    unique: true,
-    required: true,
-  },
-  password: {
-    required: true,
-    type: String,
-  },
-  isAdmin: {
-    type: Boolean,
-    default: false,
-  },
-});
+  {
+    timestamps: true,
+  }
+);
 
 // instance methods
 userSchema.methods = {
   // e.g
   updatePassword(password) {
-    return true;
+    const user = this;
+    // presave hook will hash the password
+    user.password = password;
+    return user.save();
   },
 };
 
