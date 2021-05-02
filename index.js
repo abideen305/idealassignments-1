@@ -19,6 +19,7 @@ const startServer = (databaseConnection) => {
   app.set("view engine", "ejs");
 
   app.use(express.static("public"));
+  app.use("/uploads", express.static("uploads"));
 
   // allow your app to parse urlencoded and json encoded request data
   app.use(

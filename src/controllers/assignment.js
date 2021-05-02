@@ -7,6 +7,8 @@ const config = require("../../config");
 const { validateAll } = require("indicative/validator");
 const querystring = require("querystring");
 
+const fileZipper = require("../../utils/fileZiper");
+
 exports.getSubmitAssignment = (req, res) => {
   return res.render("submit", {
     user: req.user,
@@ -34,18 +36,18 @@ exports.postSubmitAssignment = async (req, res) => {
   try {
     const reqData = req.body;
     const username = req.user ? req.user.username : null;
-    const { file } = req;
-    let fileUrl;
-    if (file) {
-      fileUrl = await fileUploader.uploadFile(file);
-    }
+    const { files } = req;
+    const URL =
+      process.env.NODE_ENV === "production"
+        ? config.BASE_URL
+        : "http://localhost:4000";
 
     const data = {
       title: reqData.title,
       email: reqData.email,
       subject: reqData.subject,
       deadline: reqData.deadline,
-      fileUrl,
+      fileUrl: `${URL}/uploads/${fileUrl}`,
     };
 
     const rules = {
@@ -62,10 +64,6 @@ exports.postSubmitAssignment = async (req, res) => {
 
     validateAll(data, rules, messages)
       .then(async () => {
-        const URL =
-          process.env.NODE_ENV === "production"
-            ? config.BASE_URL
-            : "http://localhost:4000";
         const assignment = new Assignment(data);
         const savedData = await assignment.save();
         const assignmentURL = `${URL}/assignment/${savedData.id}`;
