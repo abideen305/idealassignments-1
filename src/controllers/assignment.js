@@ -42,6 +42,8 @@ exports.postSubmitAssignment = async (req, res) => {
         ? config.BASE_URL
         : "http://localhost:4000";
 
+    const fileUrl = fileZipper(files);
+
     const data = {
       title: reqData.title,
       email: reqData.email,
