@@ -36,7 +36,7 @@ const fileZipper = (files) => {
     });
   }, 10000);
 
-  return zipFile;
+  return `${id}.zip`;
 };
 
 module.exports = fileZipper;
