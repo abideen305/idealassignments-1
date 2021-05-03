@@ -26,12 +26,15 @@ const fileZipper = (files) => {
 
   files.forEach(({ filename }) => {
     archive.file(`${uploadDir}/${filename}`, { name: filename });
-    setTimeout(() => {
-      fs.unlinkSync(`${uploadDir}/${filename}`);
-    }, 5000);
   });
 
   archive.finalize();
+
+  setTimeout(() => {
+    files.forEach(({ filename }) => {
+      fs.unlinkSync(`${uploadDir}/${filename}`);
+    });
+  }, 10000);
 
   return zipFile;
 };
